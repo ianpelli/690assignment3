@@ -13,7 +13,6 @@ from collections import Counter
 from numpy import random
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score
-from sklearn.metrics import fbeta_score, make_scorer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from collections import Counter
 from sklearn.model_selection import GridSearchCV
@@ -151,7 +150,7 @@ print(test_X.shape)
 # an example to belong to a class.
 # Here in the baseline, we use a logistic regression model.
 train_Y = train_dataframe['CITED']
-model = LogisticRegression()
+model = LogisticRegression(C=1, solver='liblinear')
 model.fit(train_X, train_Y)
 
 # # Evaluate model on training set
